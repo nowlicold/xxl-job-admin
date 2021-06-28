@@ -78,15 +78,13 @@
 					</plugin>
 				</plugins>
 			</build>
-
-			<distributionManagement>
-				<repository>
-					<id>yuan-nexus-releases</id>
-					<name>yuan-nexus-releases</name>
-					<url>http://192.168.1.151:1200/repository/maven-releases/</url>
-				</repository>
-			</distributionManagement>
 		</profile>
 	</profiles>
-
+	<distributionManagement>
+		<repository>
+			<id>yuan-nexus-releases</id>
+			<name>yuan-nexus-releases</name>
+			<url>http://192.168.1.151:1200/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 </project>

@@ -1,6 +1,7 @@
 package com.xxl.job.admin.dao;
 
 import com.xxl.job.admin.core.model.XxlJobGroup;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -33,5 +34,12 @@ public interface XxlJobGroupDao {
                              @Param("pagesize") int pagesize,
                              @Param("appname") String appname,
                              @Param("title") String title);
+
+    /**
+     * bench升级用的方法
+     * @param appName
+     * @return
+     */
+    public XxlJobGroup benchFindByAppName(@Param("appName") String appName);
 
 }
