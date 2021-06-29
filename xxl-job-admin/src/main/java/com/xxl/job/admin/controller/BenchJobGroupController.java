@@ -40,6 +40,8 @@ public class BenchJobGroupController {
 	@ResponseBody
 	@PermissionLimit(limit = false) //不进行拦截
 	public ReturnT<String> init(BenchXxlJobGroupInitRequest request) {
+		logger.error("request.appName={0},appTitle{1}",request.getAppName(),request.getTitle());
+		logger.error("request",request);
 
 		// va'lid
 		if (request.getAppName() == null || request.getAppName().trim().length() == 0) {
