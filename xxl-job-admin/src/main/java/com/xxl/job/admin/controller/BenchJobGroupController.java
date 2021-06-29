@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,10 +40,7 @@ public class BenchJobGroupController {
 	@RequestMapping("/init")
 	@ResponseBody
 	@PermissionLimit(limit = false) //不进行拦截
-	public ReturnT<String> init(BenchXxlJobGroupInitRequest request) {
-		logger.error("request.appName={0},appTitle{1}",request.getAppName(),request.getTitle());
-		logger.error("request",request);
-
+	public ReturnT<String> init(@RequestBody BenchXxlJobGroupInitRequest request) {
 		// va'lid
 		if (request.getAppName() == null || request.getAppName().trim().length() == 0) {
 			return new ReturnT<String>(500, (I18nUtil.getString("system_please_input") + "AppName"));
