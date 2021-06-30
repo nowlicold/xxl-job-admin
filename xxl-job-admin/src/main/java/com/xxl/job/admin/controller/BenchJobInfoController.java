@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,10 +46,10 @@ public class BenchJobInfoController {
     private XxlJobService xxlJobService;
 
     private BeanCopier convert = BeanCopier.create(BenchXxlJobInfo.class,XxlJobInfo.class,false);
-    @RequestMapping("/save")
+    @RequestMapping("/init")
     @ResponseBody
     @PermissionLimit(limit = false) //不进行拦截
-    public ReturnT<String> save(BenchXxlJobInfo benchXxlJobInfo){
+    public ReturnT<String> save(@RequestBody BenchXxlJobInfo benchXxlJobInfo){
 
         XxlJobGroup group = xxlJobGroupDao.benchFindByAppName(benchXxlJobInfo.getJobGroupAppName());
         if (group == null) {
@@ -116,7 +117,8 @@ public class BenchJobInfoController {
         benchXxlJobInfo.setAddTime(new Date());
         benchXxlJobInfo.setUpdateTime(new Date());
         benchXxlJobInfo.setGlueUpdatetime(new Date());
-
+        //默认增加即运行
+        benchXxlJobInfo.setTriggerStatus(1);
         XxlJobInfo xxlJobInfo = new XxlJobInfo();
         convert.copy(benchXxlJobInfo,xxlJobInfo,null);
         xxlJobInfo.setJobGroup(group.getId());
