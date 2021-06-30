@@ -128,7 +128,7 @@ public class BenchJobInfoController {
             return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail")) );
         }
         //保存成功即执行
-        return xxlJobService.start(benchXxlJobInfo.getId());
+        return xxlJobService.start(xxlJobInfo.getId());
 
     }
 
