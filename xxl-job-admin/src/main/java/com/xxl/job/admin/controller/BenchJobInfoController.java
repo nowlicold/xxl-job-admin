@@ -49,7 +49,7 @@ public class BenchJobInfoController {
     @RequestMapping("/init")
     @ResponseBody
     @PermissionLimit(limit = false) //不进行拦截
-    public ReturnT<String> save(@RequestBody BenchXxlJobInfo benchXxlJobInfo){
+    public ReturnT<String> init(@RequestBody BenchXxlJobInfo benchXxlJobInfo){
 
         XxlJobGroup group = xxlJobGroupDao.benchFindByAppName(benchXxlJobInfo.getJobGroupAppName());
         if (group == null) {
@@ -110,8 +110,8 @@ public class BenchJobInfoController {
         //如果任务已存在 则不处理
         XxlJobInfo oldXxlJobInfo = xxlJobInfoDao.benchFindByExecutorHandler(benchXxlJobInfo.getExecutorHandler());
         //如果已存在则不作处理
-        if(oldXxlJobInfo == null){
-
+        if(oldXxlJobInfo != null){
+            return ReturnT.SUCCESS;
         }
         // add in db
         benchXxlJobInfo.setAddTime(new Date());
@@ -124,7 +124,7 @@ public class BenchJobInfoController {
         xxlJobInfo.setJobGroup(group.getId());
 
         xxlJobInfoDao.save(xxlJobInfo);
-        if (benchXxlJobInfo.getId() < 1) {
+        if (xxlJobInfo.getId() < 1) {
             return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail")) );
         }
         //保存成功即执行
