@@ -72,7 +72,11 @@
 			<artifactId>xxl-job-core</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-context</artifactId>
+			<version>2.2.6.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
