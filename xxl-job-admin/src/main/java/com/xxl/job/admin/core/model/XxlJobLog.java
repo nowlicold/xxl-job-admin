@@ -1,5 +1,8 @@
 package com.xxl.job.admin.core.model;
 
+import com.bench.lang.base.string.build.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.Date;
 
 /**
@@ -153,5 +156,7 @@ public class XxlJobLog {
 	public void setAlarmStatus(int alarmStatus) {
 		this.alarmStatus = alarmStatus;
 	}
-
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+	}
 }

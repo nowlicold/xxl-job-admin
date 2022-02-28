@@ -7,6 +7,7 @@ import com.xxl.job.admin.core.model.XxlJobLog;
 import com.xxl.job.admin.core.route.ExecutorRouteStrategyEnum;
 import com.xxl.job.admin.core.scheduler.XxlJobScheduler;
 import com.xxl.job.admin.core.util.I18nUtil;
+import com.xxl.job.admin.core.util.JacksonUtil;
 import com.xxl.job.core.biz.ExecutorBiz;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.biz.model.TriggerParam;
@@ -120,8 +121,8 @@ public class XxlJobTrigger {
         jobLog.setJobGroup(jobInfo.getJobGroup());
         jobLog.setJobId(jobInfo.getId());
         jobLog.setTriggerTime(new Date());
-        XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().save(jobLog);
-        logger.debug(">>>>>>>>>>> xxl-job trigger start, jobId:{}", jobLog.getId());
+  //      XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().save(jobLog);
+        logger.warn(">>>>>>>>>>> xxl-job trigger start, jobId:{},jobLog={}", jobLog.getId(),jobLog);
 
         // 2、init trigger-param
         TriggerParam triggerParam = new TriggerParam();
@@ -193,9 +194,9 @@ public class XxlJobTrigger {
         //jobLog.setTriggerTime();
         jobLog.setTriggerCode(triggerResult.getCode());
         jobLog.setTriggerMsg(triggerMsgSb.toString());
-        XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateTriggerInfo(jobLog);
+      //  XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateTriggerInfo(jobLog);
 
-        logger.debug(">>>>>>>>>>> xxl-job trigger end, jobId:{}", jobLog.getId());
+        logger.warn(">>>>>>>>>>> xxl-job trigger end, jobId:{},jobLog:{}", jobLog.getId(),jobLog);
     }
 
     /**

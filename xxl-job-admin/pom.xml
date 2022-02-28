@@ -77,6 +77,12 @@
 			<artifactId>spring-cloud-context</artifactId>
 			<version>2.2.6.RELEASE</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.bench.lang</groupId>
+			<artifactId>bench-lang-base</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

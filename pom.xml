@@ -80,11 +80,31 @@
 			</build>
 		</profile>
 	</profiles>
-	<distributionManagement>
+	<repositories>
 		<repository>
 			<id>yuan-nexus-releases</id>
-			<name>yuan-nexus-releases</name>
-			<url>http://192.168.1.151:1200/repository/maven-releases/</url>
+			<name>Team Nexus Repository</name>
+			<url>https://nexus.sparticle.com/repository/maven-releases/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
-	</distributionManagement>
+		<repository>
+			<id>yuan-nexus-snapshots</id>
+			<name>yuan-nexus-snapshots</name>
+			<url>https://nexus.sparticle.com/repository/maven-snapshots/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>
